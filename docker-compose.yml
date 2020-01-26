@@ -4,6 +4,13 @@ services:
     image: "mongo:latest"
   redis:
     image: "redis:alpine"
+  elasticsearch:
+    build:
+      context: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
   backend:
     build:
       context: backend
